@@ -43,6 +43,13 @@
     }
   }
 
+  function checkAndReload() {
+    if (document.querySelector('div._leaveContainer_rxbn1_1')) {
+      console.log('Class *leaveContainer*rxbn1_1 found, reloading page.');
+      location.reload();
+    }
+  }
+
   Object.defineProperty(navigator, 'userAgent', {
     get: function() { return newUserAgent; }
   });
@@ -63,6 +70,7 @@
     mutations.forEach(function(mutation) {
       if (mutation.addedNodes.length) {
         replaceScriptUrl();
+        checkAndReload();
       }
     });
   });
@@ -75,4 +83,5 @@
   observer.observe(document.body, config);
 
   replaceScriptUrl();
+  checkAndReload();
 })();
